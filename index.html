@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matheaufgaben Übersicht</title>
+    <link rel="stylesheet" href="styles.css?v=20260712" />
+    <style>
+        /* Verhindert, dass CSS-Regeln das HTML-Attribut [hidden] überschreiben */
+        .task-solution[hidden] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Zugangssperre -->
+    <div id="access-gate" class="access-gate">
+        <div class="access-card">
+            <h1>Zugang geschützt</h1>
+            <p>Bitte gib das Passwort ein, um die Matheaufgaben zu sehen.</p>
+            <form id="password-form" class="password-form">
+                <input id="password-input" type="password" placeholder="Passwort" autocomplete="current-password" />
+                <button type="submit">Öffnen</button>
+            </form>
+            <p id="password-message" class="password-message" aria-live="polite"></p>
+        </div>
+    </div>
+
+    <!-- Hauptbereich der App -->
+    <main id="app-content" class="container app-content" hidden>
+        <header class="hero">
+            <div class="hero-content">
+                <div>
+                    <h1>AM-Übungsaufgaben (3TZ)</h1>
+                    <p>Wähle eine Kategorie aus, um die Aufgaben direkt auf der Webseite zu sehen.</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="layout">
+            <aside class="sidebar">
+                <h2>Kategorien</h2>
+                <div id="category-buttons" class="category-list"></div>
+            </aside>
+            <section class="content">
+                <div id="category-title" class="category-title"></div>
+                <p id="category-description" class="category-description"></p>
+                <div id="pdf-list" class="pdf-list"></div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Bild-Overlay (Lightbox) -->
+    <div id="image-overlay" class="image-overlay" hidden>
+        <button id="image-overlay-close" class="image-overlay-close" type="button"
+            aria-label="Bild schließen">×</button>
+        <img id="image-overlay-img" class="image-overlay-img" src="" alt="" />
+    </div>
+
+    <!-- Skripte -->
+    <script src="tasks.js?v=20260712"></script>
+    <script src="script.js?v=20260712"></script>
+
+    <footer class="app-footer">
+        <p>© 2026 Mathe-Lernplattform | Private Lernhilfe</p>
+        <p>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutzerklärung</a>
+        </p>
+    </footer>
+</body>
+
+</html>
