@@ -46,10 +46,13 @@ const categories = [
                 image: "downloads/Biegung_1.png",
                 imageAlt: "Skizze zum Kragträger",
                 solution: `<b>Lösungsweg:</b><br>
-<b>a) Erforderliches Widerstandsmoment W:</b><br>
-W<sub>erf</sub> = M<sub>b</sub> / &sigma;<sub>b,zul</sub> = 480.000 Nmm / 85 N/mm² = 5.647,06 mm³ = <b>5,65 cm³</b><br><br>
-<b>b) Erforderlicher Mindestdurchmesser d:</b><br>
-d = ³&radic;((32 · W) / &pi;) = ³&radic;((32 · 5.647,06 mm³) / &pi;) = <b>38,60 mm</b>`
+Allgemein gilt: F<sub>zul</sub> = (W<sub>b</sub> · &sigma;<sub>b,zul</sub>) / L<br><br>
+<b>a) Hochkant (b = 10 mm, h = 20 mm):</b><br>
+W<sub>b,a</sub> = (b · h²) / 6 = (10 mm · (20 mm)²) / 6 = 666,67 mm³<br>
+F<sub>a</sub> = (666,67 mm³ · 160 N/mm²) / 450 mm = <b>237,04 N</b><br><br>
+<b>b) Flach (b = 20 mm, h = 10 mm):</b><br>
+W<sub>b,b</sub> = (b · h²) / 6 = (20 mm · (10 mm)²) / 6 = 333,33 mm³<br>
+F<sub>b</sub> = (333,33 mm³ · 160 N/mm²) / 450 mm = <b>118,52 N</b>`
             },
 
             {
@@ -64,12 +67,11 @@ d = ³&radic;((32 · W) / &pi;) = ³&radic;((32 · 5.647,06 mm³) / &pi;) = <b>3
                 image: "downloads/Biegung_2.png",
                 imageAlt: "Skizze zur Biegewelle",
                 solution: `<b>Lösungsweg:</b><br>
-<b>1. Zulässige Biegespannung &sigma;<sub>zul</sub>:</b><br>
-&sigma;<sub>zul</sub> = R<sub>e</sub> / &nu; = 275 N/mm² / 1,5 = <b>183,33 N/mm²</b><br><br>
-<b>2. Widerstandsmoment W:</b><br>
-W = (b · h²) / 6 = (25 mm · (150 mm)²) / 6 = <b>93.750 mm³ = 93,75 cm³</b><br><br>
-<b>3. Maximal zulässige Kraft F:</b><br>
-F = (&sigma;<sub>zul</sub> · W) / L = (183,33 N/mm² · 93.750 mm³) / 1.200 mm = <b>14.322,92 N ≈ 14,32 kN</b>`
+<b>a) Erforderliches Widerstandsmoment W:</b><br>
+M<sub>b</sub> = 480 Nm = 480.000 Nmm<br>
+W<sub>erf</sub> = M<sub>b</sub> / &sigma;<sub>b,zul</sub> = 480.000 Nmm / 85 N/mm² = 5.647,06 mm³ = <b>5,65 cm³</b><br><br>
+<b>b) Erforderlicher Mindestdurchmesser d:</b><br>
+d = ³&radic;((32 · W) / &pi;) = ³&radic;((32 · 5.647,06 mm³) / &pi;) = <b>38,60 mm</b>`
 
             },
 
@@ -255,12 +257,15 @@ Hinweis - Der Elastizitätsmodul für Stahl ist im Tabellenbuch zu finden.<br>
                 image: "downloads/Biegung_10.png",
                 imageAlt: "Skizze zur Dimensionierung eines Wellenzapfens",
                 solution: `<b>Lösungsweg:</b><br>
-<b>a) Maximal zulässige Kraft F:</b><br>
-W = (&pi; · d³) / 32 = (&pi; · (45 mm)³) / 32 = 8.946,18 mm³<br>
-F = (&sigma;<sub>b,zul</sub> · W) / l = (105 N/mm² · 8.946,18 mm³) / 220 mm = <b>4.269,77 N ≈ 4,27 kN</b><br><br>
-<b>b) Elastische Durchbiegung f:</b><br>
-I = (&pi; · d⁴) / 64 = (&pi; · (45 mm)⁴) / 64 = 201.288,96 mm⁴<br>
-f = (F · l³) / (3 · E · I) = (4.269,77 N · (220 mm)³) / (3 · 210.000 N/mm² · 201.288,96 mm⁴) = <b>0,36 mm</b>`
+<b>a) Maximales Biegemoment M<sub>b,max</sub>:</b><br>
+M<sub>b,max</sub> = F · l = 5.800 N · 160 mm = <b>928.000 Nmm = 928 Nm</b><br><br>
+<b>b) Erforderliches Widerstandsmoment W<sub>erf</sub>:</b><br>
+W<sub>erf</sub> = M<sub>b,max</sub> / &sigma;<sub>b,zul</sub> = 928.000 Nmm / 95 N/mm² = <b>9.768,42 mm³</b><br><br>
+<b>c) Erforderlicher Mindestdurchmesser d:</b><br>
+d = ³&radic;((32 · W<sub>erf</sub>) / &pi;) = ³&radic;((32 · 9.768,42 mm³) / &pi;) = <b>46,34 mm</b><br><br>
+<b>d) Elastische Durchbiegung f (mit d = 46,34 mm):</b><br>
+I = (&pi; · d⁴) / 64 = (&pi; · (46,34 mm)⁴) / 64 = 225.885,25 mm⁴<br>
+f = (F · l³) / (3 · E · I) = (5.800 N · (160 mm)³) / (3 · 210.000 N/mm² · 225.885,25 mm⁴) = <b>0,17 mm</b>`
             },
 
 
@@ -284,7 +289,7 @@ Die Kraft greift im Abstand a&nbsp;=&nbsp;400&nbsp;mm vom linken Lager an.<br>
 M<sub>b,max</sub> = (F · a · b) / L = (3.200 N · 400 mm · 800 mm) / 1.200 mm = 853.333,33 Nmm<br>
 &sigma;<sub>b</sub> = M<sub>b,max</sub> / W = 853.333,33 Nmm / 12.500 mm³ = <b>68,27 N/mm²</b><br><br>
 <b>b) Durchbiegung f am Kraftangriffspunkt:</b><br>
-f = (F · a² · b²) / (3 · E · I · L) = (3.200 N · (400 mm)² · (800 mm)²) / (3 · 210.000 N/mm² · 312.500 mm⁴ · 1.200 mm) = <b>1,38 mm</b><br><br>
+f = (F · a² · b²) / (3 · E · I · L) = (3.200 N · (400 mm)² · (800 mm)²) / (3 · 210.000 N/mm² · 312.500 mm⁴ · 1.200 mm) = <b>1,39 mm</b><br><br>
 <b>c) Biegespannung &sigma;<sub>b</sub> bei Kraft F = 8.900 N:</b><br>
 M<sub>b,max</sub> = (8.900 N · 400 mm · 800 mm) / 1.200 mm = 2.373.333,33 Nmm<br>
 &sigma;<sub>b</sub> = M<sub>b,max</sub> / W = 2.373.333,33 Nmm / 12.500 mm³ = <b>189,87 N/mm²</b>`
@@ -376,8 +381,7 @@ P = W / t = 10.500 Nm / 12 s = <b>875 W</b>`
                 name: "Zeitdauer beim Güteraufzug",
                 prompt: `Ein Güteraufzug mit einer Motorleistung von P&nbsp;=&nbsp;5,5&nbsp;kW soll eine Last mit der
                 Gewichtskraft F<sub>G</sub>&nbsp;=&nbsp;8800&nbsp;N um die Höhe h&nbsp;=&nbsp;15&nbsp;m anheben.<br>
-<b>Berechne</b> die benötigte Zeit t für diesen Hubvorgang in Sekunden.</li>
-</ul>`,
+<b>Berechne</b> die benötigte Zeit t für diesen Hubvorgang in Sekunden.`,
                 image: "downloads/Güteraufzug.png",
                 imageAlt: "Aufgabenstellung Berechnung der Zeit bei Arbeit und Leistung",
                 solution: `<b>Lösungsweg:</b><br>
@@ -557,7 +561,7 @@ t = E<sub>pot</sub> / P = 3,94 Wh / 15 W = 0,263 h = <b>15,78 Minuten</b>`
 <b>Berechne:</b>
 <ul style="list-style-type: none; padding-left: 20px; margin: 8px 0 0 0;">
   <li style="text-indent: -20px; padding-left: 20px;">a)&nbsp;&nbsp;Die kinetische Energie des Fallhammers genau im Augenblick des Aufpralls.</li>
-  <li style="text-indent: -20px; padding-left: 20px;">b)&nbsp;&nbsp;Die durchschnittliche Verformungskraft, die während des 8&nbsp;mm langen Verformungswegesauf das Schmiedestück wirkt.</li>
+  <li style="text-indent: -20px; padding-left: 20px;">b)&nbsp;&nbsp;Die durchschnittliche Verformungskraft, die während des 8&nbsp;mm langen Verformungsweges auf das Schmiedestück wirkt.</li>
 </ul>`,
                 image: "downloads/Riemenfallhammer KI-Bild.png",
                 imageAlt: "Skizze zum Riemenfallhammer",
@@ -614,7 +618,7 @@ F<sub>m</sub> = E<sub>kin</sub> / s = 61,25 J / 0,002 m = <b>30.625 N ≈ 30,63 
             {
                 name: "Kreissäge",
                 prompt: `Eine Metall-Kreissäge mit einem Kreissägeblattdurchmesser &Oslash;&nbsp;=&nbsp;560&nbsp;mm dreht mit n&nbsp;=&nbsp;25&nbsp;min⁻¹.<br>Der Antriebsmotor entnimmt dem Netz eine Leistung von 4,1&nbsp;kW.<br><br>
-<b>Berechne von einem Gesamtwirkungsgrad von 0,74:</b>
+<b>Berechne von einem Gesamtwirkungsgrad von 0,74.</b>
 <ul style="list-style-type: none; padding-left: 20px; margin: 8px 0 0 0;">
   <li style="text-indent: -20px; padding-left: 20px;">a)&nbsp;&nbsp;die abgegebene Leistung am Sägeblatt,</li>
   <li style="text-indent: -20px; padding-left: 20px;">b)&nbsp;&nbsp;das Drehmoment am Sägeblatt,</li>
@@ -831,7 +835,7 @@ t = Q / P<sub>Nutz</sub> = 6.102,8 kJ / 2,139 kW = 2.853,11 s = <b>47,55 Minuten
 
             {
                 name: "Tabellenbuch-Suche",
-                prompt: `Suche im Tabellenbuch die Schmelz- und Verdampungswerte q sowie die spezifischen Wärmekapazitätswerte c die im folgenden aufgelistet sind.<br>
+                prompt: `Suche im Tabellenbuch die Schmelz- und Verdampfungswerte q sowie die spezifischen Wärmekapazitätswerte c die im folgenden aufgelistet sind.<br>
 
 <ul style="list-style-type: none; padding-left: 20px; margin: 8px 0 8px 0;">
   <li style="text-indent: -20px; padding-left: 20px;">•&nbsp;&nbsp;c<sub>Eis</sub>&nbsp;=&nbsp;2,09&nbsp;kJ/(kg·K)</li>
@@ -857,7 +861,7 @@ t = Q / P<sub>Nutz</sub> = 6.102,8 kJ / 2,139 kW = 2.853,11 s = <b>47,55 Minuten
 <b>Berechne:</b>
 <ul style="list-style-type: none; padding-left: 20px; margin: 8px 0 0 0;">
   <li style="text-indent: -20px; padding-left: 20px;">a)&nbsp;&nbsp;die Teilwärmemengen Q₁ bis Q₅ für die einzelnen 5 Abschnitte,</li>
-  <li style="text-indent: -20px; padding-left: 20px;">b)&nbsp;&nbsp;die benötigte Gesamtwärmemenge Q<sub>ges</sub> in kJ (bzw. MJ).
+  <li style="text-indent: -20px; padding-left: 20px;">b)&nbsp;&nbsp;die benötigte Gesamtwärmemenge Q<sub>ges</sub> in kJ (bzw. MJ).</li>
 </ul>`,
                 image: "downloads/Eis_zu_Dampf.png",
                 imageAlt: "Phasendiagramm und Ablauf zur Umwandlung von Eis in Wasserdampf",
@@ -882,8 +886,7 @@ Q<sub>ges</sub> = Q₁ + Q₂ + Q₃ + Q₄ + Q₅ = <b>92.288 kJ = 92,288 MJ</b
                 name: "Wasserverdampfung",
                 prompt: `Da die Raumluft im Winter sehr trocken ist, wird ein Wasserkocher genutzt, um 1,5&nbsp;Liter Wasser 
                 von T₁&nbsp;=&nbsp;15&nbsp;°C vollständig zu verdampfen (100&nbsp;°C).<br>
-<b>Berechne</b> die benötigte Gesamtwärmemenge Q<sub>ges</sub> in kJ.
-</ul>`,
+<b>Berechne</b> die benötigte Gesamtwärmemenge Q<sub>ges</sub> in kJ.`,
                 image: "downloads/Waermemenge-Wasserkocher.png",
                 imageAlt: "Aufgabenstellung Berechnen der Wärmemenge bei der Wasserverdampfung",
                 solution: `<b>Lösungsweg:</b><br>
@@ -1044,7 +1047,7 @@ T<sub>m</sub> = (14.400 + 12.000) / 1.350 = 26.400 / 1.350 = <b>19,56 °C</b>`
             },
 
             {
-                name: "Nachfüllwassers",
+                name: "Nachfüllwasser",
                 prompt: `Für ein Medizinalbad werden 120&nbsp;Liter Wasser mit einer Zieltemperatur von 37&nbsp;°C benötigt.<br>
 Im Behälter befinden sich bereits 85&nbsp;Liter Wasser mit einer Temperatur von 22&nbsp;°C.<br><br>
 <b>Berechne:</b><br>
@@ -1117,7 +1120,7 @@ T₁ = [T<sub>M</sub> · (m₁ · c₁ + m₂ · c₂) - m₂ · c₂ · T₂] /
 
     //#region Mischtemperaturen mit Aggregatwechsel
     {
-        id: "mischtemperaturen mit Aggregatwechsel",
+        id: "mischtemperaturen-aggregatwechsel",
         title: "Mischtemperaturen mit Aggregatwechsel",
         description: "Themen zu Mischtemperaturen mit Aggregat-Zustandsänderungen. Hier kommt zusätzlich die Schmelzwärme, Verdampfungswärme mit ins Spiel.",
         tasks: [
@@ -1194,7 +1197,7 @@ V = V&#775; · t = 1,2146 dm³/s · 900 s = <b>1.093,2 dm³ = 1.093,2 Liter</b>`
             {
                 name: "Teilgefüllte Abwasser-Rohrleitung",
                 prompt: `Eine Abwasserleitung besitzt eine Querschnittsfläche von A&nbsp;=&nbsp;2,5&nbsp;dm².<br>
-Im Betrieb ist das Rohr zu einem Füllungsgrad von 60&nbsp;% mit Abwasser gefüllt, wobei sich eine Mittlere Fließgeschwindigkeit von v&nbsp;=&nbsp;0,8&nbsp;m/s einstellt.<br><br>
+Im Betrieb ist das Rohr zu einem Füllungsgrad von 60&nbsp;% mit Abwasser gefüllt, wobei sich eine mittlere Fließgeschwindigkeit von v&nbsp;=&nbsp;0,8&nbsp;m/s einstellt.<br><br>
 <b>Berechne:</b><br>
 Wie groß ist der tatsächliche Volumenstrom V̇ (die Durchflussmenge) in Litern pro Sekunde (l/s) und Litern pro Minute (l/min)?`,
                 solution: `<b>Lösungsweg:</b><br>
@@ -1334,7 +1337,7 @@ V<sub>Gas</sub> = Q / H<sub>i</sub> = 41,67936 MJ / 38 MJ/m³ = <b>1,10 m³</b>`
     //#region Gasgesetze
     {
         id: "gasgesetze",
-        title: "Gasgesetze (7)",
+        title: "Gasgesetze",
         description: "Übungen zu den grundlegenden Gasgesetzen.",
         tasks: [
 
@@ -1342,7 +1345,7 @@ V<sub>Gas</sub> = Q / H<sub>i</sub> = 41,67936 MJ / 38 MJ/m³ = <b>1,10 m³</b>`
             {
                 name: "Druck in einer Gasflasche",
                 prompt: `In eine Stickstoffflasche mit einem Rauminhalt von 50&nbsp;Litern werden 8&nbsp;m³ Stickstoff gefüllt.<br><br>
-<b>Berechne:</b><
+<b>Berechne:</b>
 Welcher Überdruck p<sub>e</sub> in bar herrscht in der Flasche nach dem Befüllen?<br>
 (Die Temperatur wird als konstant angenommen; <i>Isotherme Zustandsänderung</i>).`,
                 solution: `<b>Lösungsweg:</b><br>
@@ -1419,8 +1422,7 @@ p<sub>e</sub> = p<sub>abs2</sub> - p<sub>amb</sub> = 1,0994 bar - 1,013 bar = <b
 
             {
                 name: "Druckanstieg in einem Backofen",
-                prompt: `Die Luft in einem Backofen mit den Abmessungen l&nbsp;=&nbsp;45&nbsp;cm, b&nbsp;=&nbsp;40&nbsp;cm und h&nbsp;=&nbsp;35&nbsp;cm wird
-                von 18&nbsp;°C auf 220&nbsp;°C erwärmt.<br>
+                prompt: `Die Luft in einem Backofen mit den Abmessungen l&nbsp;=&nbsp;45&nbsp;cm, b&nbsp;=&nbsp;40&nbsp;cm und h&nbsp;=&nbsp;35&nbsp;cm wird von 18&nbsp;°C auf 220&nbsp;°C erwärmt.<br>
 Der Luftdruck im Ofen beträgt zu Beginn p₁&nbsp;=&nbsp;1,0&nbsp;bar.<br><br>
 <b>Berechne:</b><br>
 Den Innendruck p₂ in bar am Ende des Aufheizvorgangs, unter der Annahme, dass der Backofen vollkommen dicht ist und keine Luft entweicht <i>(isochore Zustandsänderung)</i>.`,
